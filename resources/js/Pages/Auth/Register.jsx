@@ -8,10 +8,11 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        name: "",
+        email: "",
+        role: "", 
+        password: "",
+        password_confirmation: "",
     });
 
     useEffect(() => {
@@ -63,6 +64,21 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <Label forInput="role" value="Role" />
+
+                    <select
+                        name="role" /* make sure this and data.role is the same */
+                        id="role"
+                        className="block w-full mt-1 rounded-md"
+                        onChange={onHandleChange}
+                    >
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                        <option value="guest">Guest</option>
+                    </select>
                 </div>
 
                 <div className="mt-4">
